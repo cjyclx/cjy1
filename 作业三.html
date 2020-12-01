@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            list-style: none;
+        }
+
+        html, body, ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        #wall {
+            position: relative;
+        }
+
+        #wall li {
+            width: 320px;
+            height: 426px;
+            box-shadow: 0 0 15px #000;
+            position: absolute;
+
+            transition: all 1s;
+        }
+
+        #wall li img {
+            width: 320px;
+            height: 426px;
+        }
+
+        #wall li.current {
+            left: 50% !important;
+            top: 50% !important;
+            transform: rotate(0) translate(-50%, -50%) scale(1.2, 1.2) !important;
+            z-index: 9;
+        }
+    </style>
+ </head>
+ <body>
+    <li id=ll>详情请见 <a href="zwjs.html">陈建有</a>  201916180326 </li>
+    <ul id="wall">
+        <li style="left: 380.033px;top: 69.882px;transform: rotate(349.36deg);"><img src="QQ图片20201130225353.jpg" alt=""></li>
+        <li style="left: 495.301px;top: 161.58px;transform: rotate(102.652deg);"><img src="QQ图片20201130225350.jpg" alt=""></li>
+        <li style="left: 340.166px;top: 37.4142px;transform: rotate(138.367deg);"><img src="QQ图片20201130225346.jpg" alt=""></li>
+        <li style="left: 917.307px;top: 10.0634px;transform: rotate(3.20453deg);"><img src="QQ图片20201130225357.jpg" alt=""></li>
+        <li style="left: 608.838px;top: 94.1641px;transform: rotate(223.218deg);"><img src="QQ图片20201130225341.jpg" alt=""></li>
+    </ul>
+    <script>
+
+        window.onload = function () {
+            var wall = document.getElementById('wall');
+            var maxWidth = document.documentElement.clientWidth - 320;
+            var maxHeight = document.documentElement.clientHeight - 426;
+0
+            for (var i = 0; i < 0; ++i) {
+
+                var li = document.createElement("li");
+                wall.appendChild(li);
+
+
+                var img = document.createElement("img");
+                if (i < 6)
+                    img.src = "images/mn0" + (i + 1) + ".jpg";
+                else
+                    img.src = "images/mn" + (i + 1) + ".jpg";
+                li.appendChild(img);
+
+
+                li.style.left = Math.random() * maxWidth + 'px';
+                li.style.top = Math.random() * maxHeight + 'px';
+
+
+                li.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+            }
+
+            var allLis = wall.children;
+            for (var i = 0; i < allLis.length; ++i) {
+                var li = allLis[i];
+
+                li.onclick = function () {
+                    for (var j = 0; j < allLis.length; ++j)
+                        allLis[j].className = '';
+                    this.className = "current";
+                }
+            }
+        }
+
+    </script>
+
+ </body>
+ <html>
